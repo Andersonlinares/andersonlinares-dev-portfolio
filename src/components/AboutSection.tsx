@@ -11,7 +11,7 @@ const AboutSection = () => (
         </div>
       </ScrollReveal>
       <ScrollReveal delay={0.15}>
-        <div className="bg-card rounded-xl p-6 md:p-8 border card-glow transition-all duration-300">
+        <div className="bg-card rounded-xl p-4 sm:p-6 md:p-8 border card-glow transition-all duration-300">
           <p className="text-muted-foreground leading-relaxed">
             Sou Anderson Linares, desenvolvedor de software e web, formado em{" "}
             <span className="text-foreground font-medium">Análise e Desenvolvimento de Sistemas</span> pela UDF.

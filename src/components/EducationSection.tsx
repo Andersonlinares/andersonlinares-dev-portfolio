@@ -36,10 +36,10 @@ const EducationSection = () => (
           <h3 className="text-lg font-semibold">Cursos Extracurriculares</h3>
         </div>
       </ScrollReveal>
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-3">
         {courses.map((c, i) => (
           <ScrollReveal key={c.name} delay={0.3 + i * 0.1}>
-            <div className="bg-card rounded-xl p-5 border card-glow transition-all duration-300">
+            <div className="bg-card rounded-xl p-4 sm:p-5 border card-glow transition-all duration-300">
               <h4 className="font-medium text-foreground text-sm mb-1">{c.name}</h4>
               <p className="text-xs text-muted-foreground">{c.detail}</p>
             </div>

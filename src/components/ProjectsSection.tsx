@@ -41,11 +41,11 @@ const ProjectsSection = () => (
           <h2 className="text-2xl md:text-3xl font-bold">Projetos</h2>
         </div>
       </ScrollReveal>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
         {projects.map((p, i) => (
           <ScrollReveal key={p.title} delay={0.1 * (i + 1)}>
-            <div className="bg-card rounded-xl p-6 border card-glow hover:border-primary/40 transition-all duration-300 h-full flex flex-col">
-              <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+            <div className="bg-card rounded-xl p-4 sm:p-6 border card-glow hover:border-primary/40 transition-all duration-300 h-full flex flex-col">
+              <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2 text-sm sm:text-base">
                 {p.title}
                 {p.link && (
                   <a
@@ -59,7 +59,7 @@ const ProjectsSection = () => (
                   </a>
                 )}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                 {p.description}
               </p>
               <div className="flex flex-wrap gap-1.5">
