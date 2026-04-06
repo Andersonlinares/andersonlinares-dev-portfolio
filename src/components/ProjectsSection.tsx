@@ -3,28 +3,44 @@ import ScrollReveal from "./ScrollReveal";
 
 const projects = [
   {
-    title: "Automação de Atendimento – EVO Coaching",
+    title: "Zenith Therapies",
+    description:
+      "Sistema de cadastro e acompanhamento para clínica naturoterapeuta.",
+    tags: ["Lovable", "React", "TypeScript", "Sistema Web"],
+    link: "https://zeniththerapiessystem.lovable.app",
+  },
+  {
+    title: "Jarrão Flores",
+    description:
+      "Landing page para floricultura com foco em conversão e experiência do usuário.",
+    tags: ["Landing Page", "Web Design", "Conversão"],
+    link: "https://jarraoflores.com.br/",
+  },
+  {
+    title: "Maria Gois Psi",
+    description:
+      "Página informativa e retenção de clientes para psicóloga.",
+    tags: ["Landing Page", "Retenção", "Saúde"],
+    link: "https://mariagoispsi.com.br/",
+  },
+  {
+    title: "Drogaria Ariane",
+    description:
+      "Landing page informativa para drogaria.",
+    tags: ["Landing Page", "Web Design", "Saúde"],
+    link: "https://drogariaariane.com.br/",
+  },
+  {
+    title: "Automação – EVO Coaching",
     description:
       "Fluxos automatizados de captação e relacionamento com clientes usando ManyChat e ActiveCampaign, integrando chatbots com CRM e e-mail marketing.",
     tags: ["ManyChat", "ActiveCampaign", "Automação"],
   },
   {
-    title: "Integração de CRM e Sistemas – BRL Educação",
+    title: "Integração de CRM – BRL Educação",
     description:
       "Configuração e integração de CRMs com ferramentas de marketing e financeiro, otimizando fluxos entre equipes usando Kommo, Make e Zapier.",
     tags: ["Kommo", "Make", "Zapier", "CRM"],
-  },
-  {
-    title: "Landing Pages e Comunicação Digital",
-    description:
-      "Criação de landing pages para divulgação de cursos e eventos, com foco em conversão e experiência do usuário, utilizando WordPress e Hostinger.",
-    tags: ["WordPress", "Hostinger", "Landing Pages"],
-  },
-  {
-    title: "Desenvolvimento Web com Lovable",
-    description:
-      "Desenvolvimento de aplicações web modernas utilizando a plataforma Lovable, com foco em interfaces responsivas e integração com APIs.",
-    tags: ["Lovable", "React", "TypeScript"],
   },
 ];
 
@@ -43,6 +59,17 @@ const ProjectsSection = () => (
             <div className="bg-card rounded-xl p-6 border card-glow hover:border-primary/40 transition-all duration-300 h-full flex flex-col">
               <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2">
                 {p.title}
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/80 transition-colors"
+                    aria-label={`Visitar ${p.title}`}
+                  >
+                    <ExternalLink size={16} />
+                  </a>
+                )}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                 {p.description}
