@@ -3,6 +3,15 @@ import ScrollReveal from "./ScrollReveal";
 
 const experiences = [
   {
+    role: "Desenvolvedor Web e Analista de Sistemas",
+    company: "EVO Coaching",
+    period: "Atual",
+    location: "Brasília, DF",
+    description:
+      "Gestão da comunicação digital e manutenção contínua dos sites da empresa. Criação e configuração de links de pagamento, estruturação de fluxos automatizados de atendimento, captação e relacionamento com clientes. Desenvolvimento e gerenciamento de automações utilizando ManyChat, ActiveCampaign e outras ferramentas digitais, visando otimizar processos e aumentar a eficiência operacional.",
+    current: true,
+  },
+  {
     role: "Desenvolvedor e Analista de Sistemas",
     company: "BRL Educação Formação Empresarial",
     period: "Ago 2024",
@@ -41,11 +50,13 @@ const ExperienceSection = () => (
         {experiences.map((exp, i) => (
           <ScrollReveal key={i} delay={0.1 * (i + 1)}>
             <div className="relative">
-              <div className="absolute -left-[calc(0.5rem+1.5rem+1px)] top-1 w-3 h-3 rounded-full bg-primary" />
+              <div className={`absolute -left-[calc(0.5rem+1.5rem+1px)] top-1 w-3 h-3 rounded-full ${exp.current ? "bg-primary animate-pulse" : "bg-primary"}`} />
               <div className="bg-card rounded-xl p-6 border card-glow transition-all duration-300">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1 gap-2">
                   <h3 className="font-semibold text-foreground">{exp.role}</h3>
-                  <span className="text-xs font-mono text-primary">{exp.period}</span>
+                  <span className={`text-xs font-mono shrink-0 ${exp.current ? "px-2 py-0.5 rounded-full bg-primary/15 text-primary" : "text-primary"}`}>
+                    {exp.period}
+                  </span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-3">
                   {exp.company} · {exp.location}
