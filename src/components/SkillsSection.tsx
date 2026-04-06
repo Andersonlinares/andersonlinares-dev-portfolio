@@ -1,4 +1,5 @@
 import { Wrench, Code, Brain, Globe } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const tools = [
   "Kommo", "Zapier", "Eduzz", "Lovable", "WordPress", "Hostinger",
@@ -30,8 +31,7 @@ const Tag = ({ children }: { children: React.ReactNode }) => (
 const SkillsSection = () => (
   <section id="habilidades" className="py-20">
     <div className="container max-w-3xl space-y-12">
-      {/* Tools */}
-      <div>
+      <ScrollReveal>
         <div className="flex items-center gap-3 mb-6">
           <Wrench className="text-primary" size={24} />
           <h2 className="text-2xl md:text-3xl font-bold">Ferramentas</h2>
@@ -39,10 +39,9 @@ const SkillsSection = () => (
         <div className="flex flex-wrap gap-2">
           {tools.map((t) => <Tag key={t}>{t}</Tag>)}
         </div>
-      </div>
+      </ScrollReveal>
 
-      {/* Technologies */}
-      <div>
+      <ScrollReveal>
         <div className="flex items-center gap-3 mb-6">
           <Code className="text-primary" size={24} />
           <h2 className="text-2xl md:text-3xl font-bold">Tecnologias</h2>
@@ -50,10 +49,9 @@ const SkillsSection = () => (
         <div className="flex flex-wrap gap-2">
           {techs.map((t) => <Tag key={t}>{t}</Tag>)}
         </div>
-      </div>
+      </ScrollReveal>
 
-      {/* Competencies */}
-      <div>
+      <ScrollReveal>
         <div className="flex items-center gap-3 mb-6">
           <Brain className="text-primary" size={24} />
           <h2 className="text-2xl md:text-3xl font-bold">Competências</h2>
@@ -61,10 +59,9 @@ const SkillsSection = () => (
         <div className="flex flex-wrap gap-2">
           {competencies.map((c) => <Tag key={c}>{c}</Tag>)}
         </div>
-      </div>
+      </ScrollReveal>
 
-      {/* Languages */}
-      <div>
+      <ScrollReveal>
         <div className="flex items-center gap-3 mb-6">
           <Globe className="text-primary" size={24} />
           <h2 className="text-2xl md:text-3xl font-bold">Idiomas</h2>
@@ -77,7 +74,7 @@ const SkillsSection = () => (
             </div>
           ))}
         </div>
-      </div>
+      </ScrollReveal>
     </div>
   </section>
 );
