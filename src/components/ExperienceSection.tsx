@@ -1,4 +1,5 @@
 import { Briefcase } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const experiences = [
   {
@@ -30,25 +31,29 @@ const experiences = [
 const ExperienceSection = () => (
   <section id="experiencia" className="py-20">
     <div className="container max-w-3xl">
-      <div className="flex items-center gap-3 mb-8">
-        <Briefcase className="text-primary" size={24} />
-        <h2 className="text-2xl md:text-3xl font-bold">Experiência</h2>
-      </div>
+      <ScrollReveal>
+        <div className="flex items-center gap-3 mb-8">
+          <Briefcase className="text-primary" size={24} />
+          <h2 className="text-2xl md:text-3xl font-bold">Experiência</h2>
+        </div>
+      </ScrollReveal>
       <div className="relative pl-6 border-l-2 border-border space-y-10">
         {experiences.map((exp, i) => (
-          <div key={i} className="relative">
-            <div className="absolute -left-[calc(0.5rem+1.5rem+1px)] top-1 w-3 h-3 rounded-full bg-primary" />
-            <div className="bg-card rounded-xl p-6 border card-glow transition-all duration-300">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                <h3 className="font-semibold text-foreground">{exp.role}</h3>
-                <span className="text-xs font-mono text-primary">{exp.period}</span>
+          <ScrollReveal key={i} delay={0.1 * (i + 1)}>
+            <div className="relative">
+              <div className="absolute -left-[calc(0.5rem+1.5rem+1px)] top-1 w-3 h-3 rounded-full bg-primary" />
+              <div className="bg-card rounded-xl p-6 border card-glow transition-all duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
+                  <h3 className="font-semibold text-foreground">{exp.role}</h3>
+                  <span className="text-xs font-mono text-primary">{exp.period}</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  {exp.company} · {exp.location}
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{exp.description}</p>
               </div>
-              <p className="text-sm text-muted-foreground mb-3">
-                {exp.company} · {exp.location}
-              </p>
-              <p className="text-muted-foreground text-sm leading-relaxed">{exp.description}</p>
             </div>
-          </div>
+          </ScrollReveal>
         ))}
       </div>
     </div>
