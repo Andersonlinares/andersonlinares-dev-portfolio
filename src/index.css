@@ -32,14 +32,14 @@
 
     --border: 227 48% 15%;
     --input: 227 48% 15%;
-    --ring: 240 4% 95%;
+    --ring: 220 70% 55%;
 
     --radius: 0.75rem;
 
-    --hero-gradient: linear-gradient(135deg, hsl(240 4% 95%), hsl(233 5% 65%));
-    --text-gradient: linear-gradient(135deg, hsl(240 4% 95%), hsl(233 5% 65%));
-    --card-glow: 0 0 40px hsl(233 5% 65% / 0.06);
-    --card-border-hover: hsl(233 5% 65% / 0.3);
+    --hero-gradient: linear-gradient(135deg, hsl(220 70% 55%), hsl(200 80% 60%));
+    --text-gradient: linear-gradient(135deg, hsl(210 80% 60%), hsl(190 75% 65%));
+    --card-glow: 0 0 40px hsl(220 70% 55% / 0.08);
+    --card-border-hover: hsl(220 70% 55% / 0.3);
 
     --sidebar-background: 225 55% 9%;
     --sidebar-foreground: 240 4% 95%;
