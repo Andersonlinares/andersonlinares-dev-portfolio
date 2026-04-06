@@ -3,7 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 
 const experiences = [
   {
-    role: "Desenvolvedor Web e Analista de Sistemas",
+    role: "Analista de Sistemas",
     company: "EVO Coaching",
     period: "Atual",
     location: "Brasília, DF",
