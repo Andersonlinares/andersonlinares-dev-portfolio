@@ -17,17 +17,17 @@ const ContactSection = () => (
           <h2 className="text-2xl md:text-3xl font-bold">Contato</h2>
         </div>
       </ScrollReveal>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
         {contacts.map((c, i) => (
           <ScrollReveal key={c.label} delay={0.1 * (i + 1)}>
             <a
               href={c.href}
               target={c.href.startsWith("http") ? "_blank" : undefined}
               rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="flex items-center gap-4 bg-card rounded-xl p-5 border card-glow hover:border-primary/40 transition-all duration-300"
+              className="flex items-center gap-3 sm:gap-4 bg-card rounded-xl p-4 sm:p-5 border card-glow hover:border-primary/40 transition-all duration-300 min-w-0"
             >
-              <c.icon className="text-primary shrink-0" size={20} />
-              <span className="text-sm text-muted-foreground hover:text-foreground transition-colors break-all">
+              <c.icon className="text-primary shrink-0" size={18} />
+              <span className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors truncate">
                 {c.label}
               </span>
             </a>

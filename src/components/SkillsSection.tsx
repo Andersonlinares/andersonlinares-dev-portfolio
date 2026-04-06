@@ -66,11 +66,11 @@ const SkillsSection = () => (
           <Globe className="text-primary" size={24} />
           <h2 className="text-2xl md:text-3xl font-bold">Idiomas</h2>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-3 sm:gap-4">
           {languages.map((l) => (
-            <div key={l.name} className="bg-card rounded-xl px-6 py-4 border card-glow transition-all duration-300">
-              <p className="font-medium text-foreground">{l.name}</p>
-              <p className="text-sm text-primary">{l.level}</p>
+            <div key={l.name} className="bg-card rounded-xl px-5 sm:px-6 py-3 sm:py-4 border card-glow transition-all duration-300">
+              <p className="font-medium text-foreground text-sm sm:text-base">{l.name}</p>
+              <p className="text-xs sm:text-sm text-primary">{l.level}</p>
             </div>
           ))}
         </div>

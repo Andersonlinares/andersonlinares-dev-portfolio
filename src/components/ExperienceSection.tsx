@@ -46,22 +46,22 @@ const ExperienceSection = () => (
           <h2 className="text-2xl md:text-3xl font-bold">Experiência</h2>
         </div>
       </ScrollReveal>
-      <div className="relative pl-6 border-l-2 border-border space-y-10">
+      <div className="relative pl-4 sm:pl-6 border-l-2 border-border space-y-8 sm:space-y-10">
         {experiences.map((exp, i) => (
           <ScrollReveal key={i} delay={0.1 * (i + 1)}>
             <div className="relative">
-              <div className={`absolute -left-[calc(0.5rem+1.5rem+1px)] top-1 w-3 h-3 rounded-full ${exp.current ? "bg-primary animate-pulse" : "bg-primary"}`} />
-              <div className="bg-card rounded-xl p-6 border card-glow transition-all duration-300">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1 gap-2">
-                  <h3 className="font-semibold text-foreground">{exp.role}</h3>
-                  <span className={`text-xs font-mono shrink-0 ${exp.current ? "px-2 py-0.5 rounded-full bg-primary/15 text-primary" : "text-primary"}`}>
+              <div className={`absolute -left-[calc(0.5rem+1rem+1px)] sm:-left-[calc(0.5rem+1.5rem+1px)] top-1 w-3 h-3 rounded-full ${exp.current ? "bg-primary animate-pulse" : "bg-primary"}`} />
+              <div className="bg-card rounded-xl p-4 sm:p-6 border card-glow transition-all duration-300">
+                <div className="flex flex-col gap-1 mb-1">
+                  <h3 className="font-semibold text-foreground text-sm sm:text-base">{exp.role}</h3>
+                  <span className={`text-xs font-mono shrink-0 w-fit ${exp.current ? "px-2 py-0.5 rounded-full bg-primary/15 text-primary" : "text-primary"}`}>
                     {exp.period}
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground mb-3">
+                <p className="text-xs sm:text-sm text-muted-foreground mb-3">
                   {exp.company} · {exp.location}
                 </p>
-                <p className="text-muted-foreground text-sm leading-relaxed">{exp.description}</p>
+                <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{exp.description}</p>
               </div>
             </div>
           </ScrollReveal>
