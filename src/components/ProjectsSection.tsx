@@ -30,18 +30,6 @@ const projects = [
     tags: ["Landing Page", "Web Design", "Saúde"],
     link: "https://drogariaariane.com.br/",
   },
-  {
-    title: "Automação – EVO Coaching",
-    description:
-      "Fluxos automatizados de captação e relacionamento com clientes usando ManyChat e ActiveCampaign, integrando chatbots com CRM e e-mail marketing.",
-    tags: ["ManyChat", "ActiveCampaign", "Automação"],
-  },
-  {
-    title: "Integração de CRM – BRL Educação",
-    description:
-      "Configuração e integração de CRMs com ferramentas de marketing e financeiro, otimizando fluxos entre equipes usando Kommo, Make e Zapier.",
-    tags: ["Kommo", "Make", "Zapier", "CRM"],
-  },
 ];
 
 const ProjectsSection = () => (
