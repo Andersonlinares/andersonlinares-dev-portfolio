@@ -14,7 +14,7 @@ const experiences = [
   {
     role: "Desenvolvedor e Analista de Sistemas",
     company: "BRL Educação Formação Empresarial",
-    period: "Ago 2024",
+    period: "Ago 2024 – Set 2025",
     location: "Brasília, DF",
     description:
       "Análise e integração de sistemas e ferramentas. Configuração de CRMs, integração de ferramentas, desenvolvimento em Lovable e estudo de IA para otimização de fluxos entre marketing, comercial e financeiro.",
