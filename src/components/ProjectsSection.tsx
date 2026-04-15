@@ -30,6 +30,13 @@ const projects = [
     tags: ["Landing Page", "Web Design", "Saúde"],
     link: "https://drogariaariane.com.br/",
   },
+  {
+    title: "Money Finance",
+    description:
+      "Sistema web para gestão de finanças pessoais e controle financeiro.",
+    tags: ["Lovable", "React", "TypeScript", "Finanças"],
+    link: "https://money-finance.lovable.app",
+  },
 ];
 
 const ProjectsSection = () => (
