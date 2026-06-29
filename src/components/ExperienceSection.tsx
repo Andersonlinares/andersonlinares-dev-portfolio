@@ -5,7 +5,7 @@ const experiences = [
   {
     role: "Analista de Sistemas",
     company: "EVO Coaching",
-    period: "Atual",
+    period: "Set 2025 – Mai 2026",
     location: "Brasília, DF",
     description:
       "Gestão da comunicação digital e manutenção contínua dos sites da empresa. Criação e configuração de links de pagamento, estruturação de fluxos automatizados de atendimento, captação e relacionamento com clientes. Desenvolvimento e gerenciamento de automações utilizando ManyChat, ActiveCampaign e outras ferramentas digitais, visando otimizar processos e aumentar a eficiência operacional.",
