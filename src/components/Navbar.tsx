@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-
-const links = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Experiência", href: "#experiencia" },
-  { label: "Projetos", href: "#projetos" },
-  { label: "Formação", href: "#formacao" },
-  { label: "Habilidades", href: "#habilidades" },
-  { label: "Contato", href: "#contato" },
-];
+import { useLang } from "@/lib/i18n";
+import LanguageToggle from "./LanguageToggle";
 
 const Navbar = () => {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { label: t.nav.about, href: "#sobre" },
+    { label: t.nav.experience, href: "#experiencia" },
+    { label: t.nav.projects, href: "#projetos" },
+    { label: t.nav.education, href: "#formacao" },
+    { label: t.nav.skills, href: "#habilidades" },
+    { label: t.nav.contact, href: "#contato" },
+  ];
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -39,15 +42,19 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
+          <LanguageToggle />
         </div>
 
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageToggle />
+          <button
+            className="text-foreground"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {open && (
