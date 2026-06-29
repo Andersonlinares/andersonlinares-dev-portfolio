@@ -271,14 +271,10 @@ type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Dict };
 const LanguageContext = createContext<Ctx | null>(null);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLangState] = useState<Lang>(() => {
-    if (typeof window === "undefined") return "pt";
-    return (localStorage.getItem("lang") as Lang) || "pt";
-  });
+  const [lang, setLangState] = useState<Lang>("pt");
 
   const setLang = (l: Lang) => {
     setLangState(l);
-    localStorage.setItem("lang", l);
   };
 
   useEffect(() => {

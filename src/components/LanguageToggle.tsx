@@ -4,9 +4,9 @@ const LanguageToggle = ({ className = "" }: { className?: string }) => {
   const { lang, setLang } = useLang();
   const next = lang === "pt" ? "en" : "pt";
   const label = lang === "pt" ? "Switch to English" : "Mudar para Português";
-  // Flag shown represents the language the click will switch TO
-  const flag = next === "en" ? "🇺🇸" : "🇧🇷";
-  const code = next.toUpperCase();
+  // Flag shown represents the CURRENT language
+  const flag = lang === "pt" ? "🇧🇷" : "🇺🇸";
+  const code = lang.toUpperCase();
 
   return (
     <button
