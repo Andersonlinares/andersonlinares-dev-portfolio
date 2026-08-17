@@ -7,7 +7,7 @@ const links = [
   "https://jarraoflores.com.br/",
   "https://mariagoispsi.com.br/",
   "https://drogariaariane.com.br/",
-  "https://money-finance.lovable.app",
+  "https://aurumcore.lovable.app/",
 ];
 
 const ProjectsSection = () => {
