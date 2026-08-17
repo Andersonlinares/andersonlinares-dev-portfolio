@@ -16,9 +16,9 @@ export const translations = {
     },
     hero: {
       greeting: "Olá, eu sou",
-      role: "Desenvolvedor Full Stack Júnior",
+      role: "Analista de Sistemas e Automações | CRM, IA, Integrações e Desenvolvimento Web",
       summary:
-        "Integrador de sistemas com experiência em gestão de CRMs, automação de processos, desenvolvimento web e criação de soluções personalizadas.",
+        "Analista de sistemas e gestor de automações com experiência em integração de sistemas, CRMs, chatbots, IA e desenvolvimento web.",
       downloadCV: "Baixar CV",
       email: "E-mail",
       cvFile: "/curriculo-anderson-linares.pdf",
@@ -28,27 +28,35 @@ export const translations = {
       p1Before: "Sou Anderson Linares, desenvolvedor de software e web, formado em ",
       degree: "Análise e Desenvolvimento de Sistemas",
       p1After:
-        " pela UDF. Tenho experiência em integração de sistemas e criação de aplicativos sem código. Sou familiarizado com ferramentas como Kommo, Zapier, Make e WordPress. Com boa capacidade de adaptação e aprendizado rápido, busco sempre oferecer soluções eficientes e inovadoras para as empresas.",
+        " pela UDF. Tenho experiência prática em integração de sistemas, manutenção de sites WordPress, implementação de CRMs, chatbots, automações de marketing/comercial e criação de soluções personalizadas. Atuei em operações digitais, lançamentos, campanhas de comunicação, fluxos com WhatsApp, e-mail marketing e ferramentas como Kommo, Make, n8n, Zapier, ActiveCampaign, ManyChat, RD Station, OpenAI e Claude.",
     },
     experience: {
       title: "Experiência",
       items: [
         {
-          role: "Analista de Sistemas",
-          company: "EVO Coaching",
+          role: "Gerente de Automações",
+          company: "Evo Coaching e Editora LTDA – Marcio Micheli",
           period: "Set 2025 – Mai 2026",
-          location: "Brasília, DF",
+          location: "Águas Claras, DF",
           description:
-            "Gestão da comunicação digital e manutenção contínua dos sites da empresa. Criação e configuração de links de pagamento, estruturação de fluxos automatizados de atendimento, captação e relacionamento com clientes. Desenvolvimento e gerenciamento de automações utilizando ManyChat, ActiveCampaign e outras ferramentas digitais, visando otimizar processos e aumentar a eficiência operacional.",
+            "Gestão da comunicação digital e manutenção de sites, mantendo páginas, conteúdos e sistemas atualizados e alinhados à estratégia do negócio. Criação e manutenção de campanhas de lançamento e meteóricos, com disparos em massa via WhatsApp (ManyChat), e-mails (ActiveCampaign) e automações de relacionamento. Gerenciamento de grupos com Redirect+ e Sendflow e fluxos para bases com mais de 13.000 pessoas. Criação de links de pagamento na Teachable e comunicação direta com a base de contatos.",
           current: true,
         },
         {
-          role: "Desenvolvedor e Analista de Sistemas",
-          company: "BRL Educação Formação Empresarial",
+          role: "Analista de Sistemas e Automações",
+          company: "BRL Educação – Formação Empresarial",
           period: "Ago 2024 – Set 2025",
           location: "Brasília, DF",
           description:
-            "Análise e integração de sistemas e ferramentas. Configuração de CRMs, integração de ferramentas, desenvolvimento em Lovable e estudo de IA para otimização de fluxos entre marketing, comercial e financeiro.",
+            "Análise e integração de sistemas e ferramentas para conectar processos de marketing, comercial e financeiro. Configuração de CRMs, automações, campos, funis e fluxos de atendimento. Desenvolvimento de soluções personalizadas em Lovable e apoio no uso de IA para otimizar rotinas internas. Integração por webhooks e plataformas como Make, Zapier, Pluga e Kommo.",
+        },
+        {
+          role: "Gestão de IA, Automações e Desenvolvimento Web",
+          company: "Projetos independentes / prestação de serviços",
+          period: "2024 – Atual",
+          location: "Remoto",
+          description:
+            "Criação e manutenção de páginas WordPress, landing pages e ajustes em e-commerce. Construção de automações com Make e n8n para atendimento, CRM, formulários e acompanhamento de leads. Implantação de chatbots e fluxos integrados com WhatsApp, CRM e ferramentas de marketing digital.",
         },
         {
           role: "Analista de Comunicação e Operações",
@@ -56,7 +64,7 @@ export const translations = {
           period: "Fev 2023 – Dez 2024",
           location: "Brasília, DF",
           description:
-            "Responsável pela gestão de pedidos, criação de landing pages, edição de vídeos e apoio em transmissões ao vivo para divulgação de cursos bíblicos gratuitos em ambiente digital e físico.",
+            "Gestão de pedidos, organização operacional e apoio na divulgação de cursos bíblicos gratuitos. Criação de landing pages, peças digitais e materiais de comunicação. Apoio em transmissões ao vivo, gravações e edição de vídeos e fotos.",
         },
         {
           role: "Auxiliar Administrativo – Jovem Aprendiz",
@@ -64,7 +72,7 @@ export const translations = {
           period: "Set 2021 – Dez 2021",
           location: "Belo Horizonte, MG",
           description:
-            "Atuei na catalogação e organização de documentos físicos, otimizando o processo de mudança de acervo e garantindo a integridade dos registros no setor administrativo.",
+            "Catalogação e organização de documentos físicos durante processo de mudança de acervo administrativo, com apoio a rotinas administrativas e foco na integridade dos registros.",
         },
       ],
     },
@@ -105,12 +113,12 @@ export const translations = {
       degreePeriod: "Jan 2022 – Mar 2024",
       institution: "UDF · Graduação · Brasília, DF",
       degreeDesc:
-        "Desenvolvimento de habilidades em lógica de programação, programação, banco de dados e estrutura de sistemas.",
+        "Formação com foco em lógica de programação, banco de dados, estrutura de sistemas, desenvolvimento de software e análise de requisitos.",
       extraTitle: "Cursos Extracurriculares",
       courses: [
-        { name: "Fundação Bradesco", detail: "Gestão de Banco de Dados e CSS" },
-        { name: "ESPRO", detail: "Rotinas Administrativas e Comunicação Profissional" },
-        { name: "Centro Interescolar de Línguas", detail: "Desenvolvimento do Inglês" },
+        { name: "Fundação Bradesco", detail: "Gestão de banco de dados e técnicas modernas de estilização CSS · Ago 2023" },
+        { name: "ESPRO", detail: "Rotinas administrativas, comunicação profissional e postura corporativa · Set 2021" },
+        { name: "Centro Interescolar de Línguas", detail: "Inglês com foco em comunicação, escrita e compreensão · Jan 2024" },
       ],
     },
     skills: {
@@ -120,11 +128,13 @@ export const translations = {
       languages: "Idiomas",
       competencyList: [
         "Integração de Sistemas", "Desenvolvimento Web", "Automação de Processos",
-        "Integração de CRM", "Resolução de Problemas", "Desenvolvimento de Software",
-        "Desenvolvimento Backend", "Testes e Depuração", "Geração de Leads", "Análise de Sistemas",
+        "Integração de CRM", "Chatbots e IA", "Levantamento de Requisitos",
+        "E-mail Marketing", "Campanhas de Lançamento", "Testes e Depuração",
+        "Documentação", "Geração de Leads", "Análise de Sistemas",
       ],
       languageList: [
-        { name: "Espanhol", level: "Fluente" },
+        { name: "Português", level: "Nativo" },
+        { name: "Espanhol", level: "Nativo" },
         { name: "Inglês", level: "Intermediário" },
       ],
     },
@@ -146,9 +156,9 @@ export const translations = {
     },
     hero: {
       greeting: "Hi, I'm",
-      role: "Junior Full Stack Developer",
+      role: "Systems & Automation Analyst | CRM, AI, Integrations and Web Development",
       summary:
-        "Systems integrator with experience in CRM management, process automation, web development, and building custom solutions.",
+        "Systems analyst and automation manager with experience in systems integration, CRMs, chatbots, AI, and web development.",
       downloadCV: "Download CV",
       email: "Email",
       cvFile: "/Anderson_Linares_Resume_EN.pdf",
@@ -158,27 +168,35 @@ export const translations = {
       p1Before: "I'm Anderson Linares, a software and web developer with a degree in ",
       degree: "Systems Analysis and Development",
       p1After:
-        " from UDF. I have experience in systems integration and building no-code applications. I'm familiar with tools like Kommo, Zapier, Make, and WordPress. With strong adaptability and quick learning, I always aim to deliver efficient and innovative solutions for businesses.",
+        " from UDF. I have hands-on experience in systems integration, WordPress site maintenance, CRM implementation, chatbots, marketing/sales automations, and building custom solutions. I've worked on digital operations, launches, communication campaigns, WhatsApp flows, email marketing, and tools like Kommo, Make, n8n, Zapier, ActiveCampaign, ManyChat, RD Station, OpenAI, and Claude.",
     },
     experience: {
       title: "Experience",
       items: [
         {
-          role: "Systems Analyst",
-          company: "EVO Coaching",
+          role: "Automations Manager",
+          company: "Evo Coaching e Editora LTDA – Marcio Micheli",
           period: "Sep 2025 – May 2026",
-          location: "Brasília, DF",
+          location: "Águas Claras, DF",
           description:
-            "Management of digital communication and continuous maintenance of company websites. Creation and configuration of payment links, structuring of automated customer service flows, lead capture, and client relationship management. Development and management of automations using ManyChat, ActiveCampaign, and other digital tools to optimize processes and increase operational efficiency.",
+            "Management of digital communication and website maintenance, keeping pages, content, and systems updated and aligned with business strategy. Creation and maintenance of launch campaigns, including mass WhatsApp broadcasts (ManyChat), emails (ActiveCampaign), and relationship automations. Group management with Redirect+ and Sendflow and communication flows for bases of over 13,000 people. Payment link creation on Teachable.",
           current: true,
         },
         {
-          role: "Developer and Systems Analyst",
-          company: "BRL Educação Formação Empresarial",
+          role: "Systems and Automations Analyst",
+          company: "BRL Educação – Formação Empresarial",
           period: "Aug 2024 – Sep 2025",
           location: "Brasília, DF",
           description:
-            "Analysis and integration of systems and tools. CRM configuration, tool integration, development with Lovable, and AI study to optimize flows between marketing, sales, and finance.",
+            "Analysis and integration of systems and tools to connect marketing, sales, and finance processes. CRM configuration, automations, fields, funnels, and service flows. Custom solution development with Lovable and AI support to optimize internal routines. Integration via webhooks and platforms such as Make, Zapier, Pluga, and Kommo.",
+        },
+        {
+          role: "AI, Automations and Web Development",
+          company: "Independent projects / freelance services",
+          period: "2024 – Present",
+          location: "Remote",
+          description:
+            "Creation and maintenance of WordPress pages, landing pages, and e-commerce adjustments. Automations with Make and n8n for customer service, CRM, forms, and lead follow-up. Chatbot deployment and flows integrated with WhatsApp, CRM, and digital marketing tools.",
         },
         {
           role: "Communications and Operations Analyst",
@@ -186,7 +204,7 @@ export const translations = {
           period: "Feb 2023 – Dec 2024",
           location: "Brasília, DF",
           description:
-            "Responsible for order management, landing page creation, video editing, and live broadcast support to promote free biblical courses in digital and physical environments.",
+            "Order management, operational organization, and support promoting free biblical courses. Landing page creation, digital assets, and communication materials. Support with live broadcasts, recordings, and video/photo editing.",
         },
         {
           role: "Administrative Assistant – Young Apprentice",
@@ -194,7 +212,7 @@ export const translations = {
           period: "Sep 2021 – Dec 2021",
           location: "Belo Horizonte, MG",
           description:
-            "Worked on cataloging and organizing physical documents, optimizing the archive relocation process and ensuring record integrity in the administrative sector.",
+            "Cataloging and organizing physical documents during the administrative archive relocation, supporting administrative routines with focus on record integrity.",
         },
       ],
     },
@@ -235,12 +253,12 @@ export const translations = {
       degreePeriod: "Jan 2022 – Mar 2024",
       institution: "UDF · Bachelor's · Brasília, DF",
       degreeDesc:
-        "Development of skills in programming logic, programming, databases, and systems architecture.",
+        "Focused on programming logic, databases, systems architecture, software development, and requirements analysis.",
       extraTitle: "Extracurricular Courses",
       courses: [
-        { name: "Fundação Bradesco", detail: "Database Management and CSS" },
-        { name: "ESPRO", detail: "Administrative Routines and Professional Communication" },
-        { name: "Centro Interescolar de Línguas", detail: "English Development" },
+        { name: "Fundação Bradesco", detail: "Database management and modern CSS styling techniques · Aug 2023" },
+        { name: "ESPRO", detail: "Administrative routines, professional communication and corporate conduct · Sep 2021" },
+        { name: "Centro Interescolar de Línguas", detail: "English focused on communication, writing and comprehension · Jan 2024" },
       ],
     },
     skills: {
@@ -250,11 +268,13 @@ export const translations = {
       languages: "Languages",
       competencyList: [
         "Systems Integration", "Web Development", "Process Automation",
-        "CRM Integration", "Problem Solving", "Software Development",
-        "Backend Development", "Testing and Debugging", "Lead Generation", "Systems Analysis",
+        "CRM Integration", "Chatbots and AI", "Requirements Gathering",
+        "Email Marketing", "Launch Campaigns", "Testing and Debugging",
+        "Documentation", "Lead Generation", "Systems Analysis",
       ],
       languageList: [
-        { name: "Spanish", level: "Fluent" },
+        { name: "Portuguese", level: "Native" },
+        { name: "Spanish", level: "Native" },
         { name: "English", level: "Intermediate" },
       ],
     },

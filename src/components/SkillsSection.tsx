@@ -3,13 +3,14 @@ import ScrollReveal from "./ScrollReveal";
 import { useLang } from "@/lib/i18n";
 
 const tools = [
-  "Kommo", "Zapier", "Eduzz", "Lovable", "WordPress", "Hostinger",
-  "cPanel", "VS Code", "RD Station", "Clint", "OpenAI", "Make", "Pluga", "ClickUp",
+  "Kommo", "RD Station", "Clint", "ActiveCampaign", "ManyChat", "Make", "n8n",
+  "Zapier", "Pluga", "ClickUp", "Lovable", "WordPress", "WooCommerce", "Elementor",
+  "Hostinger", "cPanel", "Teachable", "OpenAI", "Claude", "VS Code",
 ];
 
 const techs = [
-  "Java", "JavaScript", "C", "C++", "PHP", "Python",
-  "HTML", "CSS", "MySQL", "PhpMyAdmin", "Swift", "Git",
+  "Python", "JavaScript", "Java", "PHP", "Swift", "C", "C++",
+  "HTML", "CSS", "MySQL", "phpMyAdmin", "Git",
 ];
 
 const Tag = ({ children }: { children: React.ReactNode }) => (
