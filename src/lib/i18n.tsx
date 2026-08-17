@@ -101,7 +101,7 @@ export const translations = {
           tags: ["Landing Page", "Web Design", "Saúde"],
         },
         {
-          title: "Money Finance",
+          title: "Aurum Core",
           description: "Sistema web para gestão de finanças pessoais e controle financeiro.",
           tags: ["Lovable", "React", "TypeScript", "Finanças"],
         },
@@ -241,7 +241,7 @@ export const translations = {
           tags: ["Landing Page", "Web Design", "Health"],
         },
         {
-          title: "Money Finance",
+          title: "Aurum Core",
           description: "Web system for personal finance management and financial control.",
           tags: ["Lovable", "React", "TypeScript", "Finance"],
         },
