@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { ArrowUpRight, Bot, Globe, LayoutDashboard, Workflow } from "lucide-react";
+import { ArrowUpRight, Code2, Globe, LayoutDashboard, Plug } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { projectMeta, useLang, type ProjectKind } from "@/lib/i18n";
 
 type Filter = "all" | ProjectKind;
 
-const kindIcon = { automation: Workflow, system: LayoutDashboard, web: Globe } as const;
+const kindIcon = { system: LayoutDashboard, web: Globe, integration: Plug } as const;
 
 const ProjectsSection = () => {
   const { t } = useLang();
@@ -24,7 +24,7 @@ const ProjectsSection = () => {
             </div>
             <div className="-mx-4 overflow-x-auto px-4 md:mx-0 md:px-0">
               <div className="inline-flex rounded-full bg-white/[0.05] p-1" role="tablist">
-                {(["all", "automation", "system", "web"] as Filter[]).map((f) => (
+                {(["all", "system", "web", "integration"] as Filter[]).map((f) => (
                   <button
                     key={f}
                     role="tab"
@@ -44,21 +44,22 @@ const ProjectsSection = () => {
 
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((p, i) => {
-            const Icon = p.kind === "automation" && p.tags.includes("OpenAI") ? Bot : kindIcon[p.kind];
-            const Tag = p.link ? "a" : "div";
+            const Icon = kindIcon[p.kind];
+            const href = p.link ?? p.repo;
+            const Tag = href ? "a" : "div";
             return (
               <ScrollReveal key={p.title} delay={0.04 * i}>
                 <Tag
-                  {...(p.link ? { href: p.link, target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className={`glass spot group flex h-full flex-col rounded-3xl p-5 transition-transform duration-300 sm:p-6 ${p.link ? "hover:-translate-y-1" : ""}`}
+                  {...(href ? { href, target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className={`glass spot group flex h-full flex-col rounded-3xl p-5 transition-transform duration-300 sm:p-6 ${href ? "hover:-translate-y-1" : ""}`}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                       <Icon size={20} />
                     </div>
-                    {p.link && (
+                    {href && (
                       <span className="flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors group-hover:bg-white/[0.06] group-hover:text-foreground">
-                        {t.projects.visit}
+                        {p.link ? t.projects.visit : <><Code2 size={13} /> {t.projects.code}</>}
                         <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                       </span>
                     )}

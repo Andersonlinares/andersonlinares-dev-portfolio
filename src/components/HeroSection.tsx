@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Download, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
-import { contactInfo, useLang } from "@/lib/i18n";
+import { contactInfo, useLang, whatsappLink } from "@/lib/i18n";
 import { liquidSupported, useLiquidGlass } from "@/lib/liquid-glass";
 
 /* Terminal que digita sozinho */
@@ -200,7 +200,7 @@ const HeroSection = () => {
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href={contactInfo.whatsapp}
+              href={whatsappLink(t.contact.whatsappMessage)}
               target="_blank"
               rel="noopener noreferrer"
               className="glass inline-flex h-12 items-center gap-2 rounded-full px-5 text-sm font-semibold transition-colors hover:bg-white/[0.08]"

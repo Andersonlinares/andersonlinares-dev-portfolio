@@ -2,16 +2,16 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 
 export type Lang = "pt" | "en";
 
-/* Conteúdo baseado nos currículos (PT e EN) de 2026. */
+/* Conteúdo baseado nos currículos (PT e EN) de 2026 e nos sistemas publicados no GitHub. */
 
-export type ProjectKind = "web" | "system" | "automation";
+export type ProjectKind = "system" | "web" | "integration";
 
-export const projectMeta: { link?: string; kind: ProjectKind }[] = [
-  { kind: "automation" },
-  { kind: "automation" },
-  { kind: "automation" },
+export const projectMeta: { link?: string; repo?: string; kind: ProjectKind }[] = [
+  { repo: "https://github.com/Andersonlinares/solar-gestor", kind: "system" },
+  { link: "https://casorioae.lovable.app", kind: "system" },
   { link: "https://zeniththerapiessystem.lovable.app", kind: "system" },
   { link: "https://aurumcore.lovable.app/", kind: "system" },
+  { kind: "integration" },
   { link: "https://comece-pelo-mundo.vercel.app", kind: "web" },
   { link: "https://jarraoflores.com.br/", kind: "web" },
   { link: "https://mariagoispsi.com.br/", kind: "web" },
@@ -21,15 +21,24 @@ export const projectMeta: { link?: string; kind: ProjectKind }[] = [
 export const contactInfo = {
   email: "andersonlinares.dev@gmail.com",
   phone: "+55 (61) 98129-6170",
-  whatsapp: "https://wa.me/5561981296170",
   linkedin: "https://www.linkedin.com/in/andersonlinares/",
   github: "https://github.com/Andersonlinares",
 };
 
+/** link do WhatsApp com mensagem pronta, para saber que o contato veio do site */
+export const whatsappLink = (message: string) => `https://wa.me/5561981296170?text=${encodeURIComponent(message)}`;
+
+/** requisições simuladas na seção de arquitetura (iguais nos dois idiomas, só os textos mudam) */
+const requests = [
+  { method: "POST", path: "/api/orders", status: "201 Created", table: "orders" },
+  { method: "GET", path: "/api/quotes?status=open", status: "200 OK", table: "quotes" },
+  { method: "PATCH", path: "/api/guests/:id", status: "200 OK", table: "guests" },
+];
+
 const pt = {
   nav: {
     about: "Sobre",
-    flow: "Como trabalho",
+    flow: "Arquitetura",
     experience: "Experiência",
     projects: "Projetos",
     skills: "Stack",
@@ -38,10 +47,10 @@ const pt = {
   hero: {
     status: "Disponível para novos projetos",
     greeting: "Olá, eu sou",
-    role: "Analista de Sistemas e Automações",
-    roleTags: ["CRM", "IA", "Integrações", "Desenvolvimento Web"],
+    role: "Desenvolvedor de Sistemas",
+    roleTags: ["Front-end", "Back-end", "APIs", "Banco de dados"],
     summary:
-      "Conecto CRM, WhatsApp, sites e IA para que marketing, comercial e atendimento funcionem sem tarefa manual.",
+      "Desenvolvo sistemas web de ponta a ponta: interface em React e TypeScript, regras de negócio no back-end, banco PostgreSQL e integrações por API.",
     ctaProjects: "Ver projetos",
     ctaContact: "Falar comigo",
     downloadCV: "Baixar CV",
@@ -49,44 +58,46 @@ const pt = {
     lensHint: "arraste a lente",
     terminal: [
       { cmd: "whoami", out: ["Anderson Linares · Brasília, DF", "Análise e Desenvolvimento de Sistemas · UDF"] },
-      { cmd: "stack --top", out: ["Kommo · n8n · Make · Zapier", "OpenAI · Claude · WordPress · Lovable"] },
-      { cmd: "status", out: ["● automações rodando", "● leads entrando no CRM"] },
+      { cmd: "stack --frontend", out: ["React · TypeScript · Tailwind · Vite"] },
+      { cmd: "stack --backend", out: ["APIs REST · Webhooks · Supabase", "PostgreSQL · SQL · PHP · Python"] },
+      { cmd: "git push origin main", out: ["● build ok · deploy no ar"] },
     ],
   },
   stats: [
-    { value: 13000, suffix: "+", label: "contatos em fluxos de comunicação" },
-    { value: 20, suffix: "+", label: "ferramentas integradas" },
-    { value: 2024, prefix: "", suffix: "", label: "início na automação", plain: true },
+    { value: 9, suffix: "", label: "projetos no portfólio" },
+    { value: 11, suffix: "+", label: "linguagens e tecnologias" },
+    { value: 2022, suffix: "", label: "início em sistemas (UDF)", plain: true },
     { value: 3, suffix: "", label: "idiomas · PT · ES · EN" },
   ],
   about: {
     kicker: "Sobre",
-    title: "Sistemas que conversam entre si.",
+    title: "Do banco de dados à interface.",
     body:
-      "Sou formado em Análise e Desenvolvimento de Sistemas pela UDF. Trabalho com integração de sistemas, manutenção de sites WordPress, implementação de CRMs, chatbots, automações de marketing e comercial e soluções sob medida. Já atuei em operações digitais, lançamentos, campanhas de comunicação, fluxos de WhatsApp e e-mail marketing.",
+      "Sou formado em Análise e Desenvolvimento de Sistemas pela UDF. Construo sistemas web completos — modelo os dados, escrevo as regras no back-end, crio as telas e conecto tudo a outras plataformas por API. Também tenho experiência com CRMs, integrações e IA aplicada, o que me ajuda a entregar sistemas que já nascem conversando com o resto da operação.",
     highlights: [
-      { title: "Integração", text: "Webhooks e APIs ligando site, CRM, financeiro e atendimento." },
-      { title: "Automação", text: "Fluxos em n8n, Make e Zapier que tiram trabalho repetitivo do time." },
-      { title: "IA aplicada", text: "Chatbots e agentes para atender, qualificar e acompanhar leads." },
+      { title: "Front-end", text: "Interfaces em React e TypeScript, responsivas, rápidas e fáceis de usar." },
+      { title: "Back-end", text: "APIs, funções no servidor, autenticação e regras de acesso por usuário." },
+      { title: "Dados e integrações", text: "PostgreSQL, SQL, webhooks e APIs ligando o sistema a CRM, WhatsApp e IA." },
     ],
   },
   flow: {
-    kicker: "Como trabalho",
-    title: "Um lead, do formulário ao WhatsApp.",
-    text: "Simule o caminho de um contato por um fluxo que eu monto com frequência.",
-    run: "Simular lead",
+    kicker: "Arquitetura",
+    title: "O que acontece por trás de um clique.",
+    text: "Envie uma requisição e acompanhe o caminho dela pelas camadas de um sistema que eu construo.",
+    run: "Enviar requisição",
     running: "Processando…",
-    nodes: ["Formulário", "Webhook", "n8n", "IA", "CRM", "WhatsApp"],
+    nodes: ["Interface", "API", "Auth", "Regras", "PostgreSQL", "Webhook"],
+    requests,
     logs: [
-      "novo envio recebido de {name}",
-      "payload validado · origem e UTM capturadas",
-      "workflow iniciado · telefone normalizado",
-      "lead qualificado · interesse alto",
-      "contato criado no funil · responsável definido",
-      "mensagem de boas-vindas enviada",
+      "{method} {path} enviado pela interface React",
+      "rota encontrada · payload validado",
+      "token JWT verificado · política de acesso (RLS) aplicada",
+      "regra de negócio executada · totais recalculados",
+      "consulta em {table} · transação confirmada",
+      "evento enviado para integrações (CRM / WhatsApp)",
     ],
-    done: "fluxo concluído em {ms} ms",
-    names: ["Mariana", "Rafael", "Juliana", "Carlos", "Beatriz", "Lucas"],
+    done: "{status} em {ms} ms",
+    idle: "aguardando requisição…",
   },
   experience: {
     kicker: "Trajetória",
@@ -94,16 +105,29 @@ const pt = {
     current: "Atual",
     items: [
       {
-        role: "IA, Automações e Desenvolvimento Web",
+        role: "Analista de CRM / Gestor de Automações",
+        company: "Efeito Digital",
+        period: "Mai 2026 – Atual",
+        location: "Brasília, DF · Híbrido",
+        current: true,
+        bullets: [
+          "Desenvolvimento de sistemas e ferramentas internas com apoio de IA (vibe coding e Claude Code), da análise à implementação.",
+          "Integrações e automações no n8n, incluindo fluxos avançados com MCP, Claude e outras ferramentas de IA.",
+          "Implementação e estruturação de CRMs, processos comerciais, jornadas e fluxos de atendimento.",
+          "Gestão de IA e de automações: levantamento da necessidade, construção, documentação, manutenção e otimização.",
+          "Resolução de problemas técnicos em WordPress, integrações e sistemas, e participação na arquitetura de novos projetos.",
+        ],
+      },
+      {
+        role: "Desenvolvimento de Sistemas, Web e IA",
         company: "Projetos independentes / prestação de serviços",
         period: "2024 – Atual",
         location: "Remoto",
-        current: true,
         bullets: [
+          "Desenvolvimento de sistemas web com React, TypeScript e Supabase (PostgreSQL, autenticação e regras de acesso).",
           "Criação e manutenção de páginas WordPress, landing pages e ajustes em e-commerce para clientes.",
-          "Automações com Make e n8n para atendimento, CRM, formulários, captação e acompanhamento de leads.",
-          "Implantação de chatbots e fluxos integrados com WhatsApp, CRM e ferramentas de marketing digital.",
-          "Soluções simples e funcionais para reduzir tarefas manuais e centralizar informações.",
+          "Integrações por API e webhooks e automações com n8n e Make para atendimento, CRM e formulários.",
+          "Chatbots e fluxos integrados com WhatsApp, CRM e IA.",
         ],
       },
       {
@@ -112,22 +136,21 @@ const pt = {
         period: "Set 2025 – Mai 2026",
         location: "Águas Claras, DF",
         bullets: [
-          "Gestão da comunicação digital e manutenção de sites, mantendo páginas, conteúdos e sistemas alinhados à estratégia do negócio.",
-          "Campanhas de lançamento e meteóricos com disparos em massa no WhatsApp (ManyChat), e-mails (ActiveCampaign) e automações de relacionamento.",
-          "Gestão de grupos com Redirect+ e Sendflow e fluxos de comunicação para eventos e bases com mais de 13.000 pessoas.",
-          "Links de pagamento na Teachable e comunicação com a base: contagem regressiva, cartas de instrução e protocolos de ausentes.",
+          "Manutenção de sites e sistemas, mantendo páginas e conteúdos funcionais e alinhados à estratégia do negócio.",
+          "Fluxos de comunicação por WhatsApp e e-mail (ManyChat e ActiveCampaign) para lançamentos e eventos.",
+          "Links de pagamento na Teachable e gestão da base de contatos.",
         ],
       },
       {
-        role: "Analista de Sistemas e Automações",
+        role: "Desenvolvedor e Analista de Sistemas",
         company: "BRL Educação – Formação Empresarial",
         period: "Ago 2024 – Set 2025",
         location: "Brasília, DF",
         bullets: [
-          "Análise e integração de sistemas e ferramentas para conectar marketing, comercial e financeiro.",
-          "Configuração de CRMs, automações, campos, funis e fluxos de atendimento.",
-          "Soluções personalizadas em Lovable e apoio no uso de IA para otimizar rotinas internas.",
+          "Desenvolvimento de soluções personalizadas em Lovable (React) e uso de IA para otimizar rotinas internas.",
+          "Análise e integração de sistemas para conectar marketing, comercial e financeiro.",
           "Integrações por webhooks e plataformas como Make, Zapier, Pluga e Kommo.",
+          "Configuração de CRMs, campos, funis e fluxos de atendimento.",
         ],
       },
       {
@@ -136,9 +159,9 @@ const pt = {
         period: "Fev 2023 – Dez 2024",
         location: "Brasília, DF",
         bullets: [
-          "Gestão de pedidos, organização operacional e divulgação de cursos bíblicos gratuitos no digital e no presencial.",
-          "Landing pages, peças digitais e materiais de comunicação para campanhas e projetos internos.",
-          "Apoio em transmissões ao vivo, gravações, edição de vídeos e fotos e operação de conteúdo.",
+          "Criação de landing pages, peças digitais e materiais de comunicação.",
+          "Gestão de pedidos e organização operacional na divulgação de cursos gratuitos.",
+          "Apoio em transmissões ao vivo, gravações e edição de vídeos e fotos.",
         ],
       },
       {
@@ -157,52 +180,53 @@ const pt = {
     kicker: "Trabalhos",
     title: "Projetos",
     visit: "Abrir",
-    filters: { all: "Todos", automation: "Automação", system: "Sistemas", web: "Sites" },
+    code: "Código",
+    filters: { all: "Todos", system: "Sistemas", web: "Sites", integration: "Integrações" },
     items: [
       {
-        title: "CRM integrado a sites e sistemas",
-        description: "Funis, campos, robôs, formulários e webhooks ligando captação, atendimento e acompanhamento de leads.",
-        tags: ["Kommo", "Webhooks", "WordPress"],
+        title: "Solar Gestor",
+        description: "ERP para empresa de persianas e cortinas: clientes, orçamentos, pedidos, custos, fórmulas de preço, manutenções, auditoria e relatórios.",
+        tags: ["React", "TypeScript", "PostgreSQL", "PL/pgSQL"],
       },
       {
-        title: "Automação do processo comercial",
-        description: "Fluxos em Make, n8n, Zapier e Pluga que padronizam etapas e deixam cada informação rastreável.",
-        tags: ["n8n", "Make", "Zapier", "Pluga"],
-      },
-      {
-        title: "Chatbots e atendimento com IA",
-        description: "Atendimento, qualificação e nutrição de leads no WhatsApp com CRM, ferramentas de marketing e IA.",
-        tags: ["WhatsApp", "OpenAI", "Claude", "ManyChat"],
+        title: "Casório",
+        description: "Sistema de organização de casamento com confirmação de presença pública, lista de presentes, orçamento e leitura de PDF por IA.",
+        tags: ["TanStack Start", "Supabase", "RLS", "IA"],
       },
       {
         title: "Zenith Therapies",
-        description: "Sistema de cadastro e acompanhamento de pacientes para clínica de naturoterapia.",
-        tags: ["Lovable", "React", "TypeScript"],
+        description: "Sistema de cadastro e acompanhamento de pacientes para clínica de naturoterapia, com áreas de profissional e paciente.",
+        tags: ["React", "TypeScript", "Supabase"],
       },
       {
         title: "Aurum Core",
         description: "Sistema web de gestão de finanças pessoais e controle financeiro.",
-        tags: ["Lovable", "React", "TypeScript"],
+        tags: ["React", "TypeScript", "Lovable"],
+      },
+      {
+        title: "APIs e integrações",
+        description: "Webhooks, funções serverless e workflows ligando sites, CRMs, WhatsApp e modelos de IA.",
+        tags: ["REST", "Webhooks", "Vercel", "n8n"],
       },
       {
         title: "Comece pelo Mundo",
         description: "Site de turismo com globo 3D interativo.",
-        tags: ["Three.js", "3D", "Web"],
+        tags: ["Three.js", "WebGL", "JavaScript"],
       },
       {
         title: "Jarrão Flores",
         description: "Landing page para floricultura com foco em conversão.",
-        tags: ["Landing Page", "Conversão"],
+        tags: ["Front-end", "Landing Page"],
       },
       {
         title: "Maria Gois Psi",
         description: "Página informativa e de retenção de clientes para psicóloga.",
-        tags: ["Landing Page", "Saúde"],
+        tags: ["Front-end", "Landing Page"],
       },
       {
         title: "Drogaria Ariane",
         description: "Landing page informativa para drogaria.",
-        tags: ["Landing Page", "Saúde"],
+        tags: ["Front-end", "Landing Page"],
       },
     ],
   },
@@ -210,12 +234,12 @@ const pt = {
     kicker: "Ferramentas",
     title: "Stack",
     groups: [
-      { name: "CRM e automação", items: ["Kommo", "RD Station", "Clint", "ActiveCampaign", "ManyChat", "Make", "n8n", "Zapier", "Pluga", "ClickUp"] },
-      { name: "IA e chatbots", items: ["OpenAI", "Claude", "Claude Code", "Chatbots", "Qualificação de leads", "Agentes de atendimento"] },
-      { name: "Web e CMS", items: ["WordPress", "WooCommerce", "Elementor", "Lovable", "Hostinger", "cPanel", "Landing pages"] },
-      { name: "Marketing digital", items: ["Lançamentos", "Disparos WhatsApp", "E-mail marketing", "Teachable", "Redirect+", "Sendflow", "Gestão de bases"] },
-      { name: "Desenvolvimento", items: ["JavaScript", "TypeScript", "React", "Python", "PHP", "Java", "Swift", "C/C++", "HTML", "CSS", "Git"] },
-      { name: "Dados e qualidade", items: ["MySQL", "phpMyAdmin", "SQL", "Modelagem de dados", "Requisitos", "Testes", "Depuração", "Documentação"] },
+      { name: "Front-end", items: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Vite", "TanStack", "Three.js", "Responsividade"] },
+      { name: "Back-end", items: ["APIs REST", "Webhooks", "Funções serverless", "Supabase", "Autenticação", "Regras de acesso (RLS)", "PHP", "Python"] },
+      { name: "Banco de dados", items: ["PostgreSQL", "MySQL", "SQL", "PL/pgSQL", "Modelagem de dados", "phpMyAdmin"] },
+      { name: "Ferramentas", items: ["Git", "GitHub", "VS Code", "Vercel", "Lovable", "Claude Code", "Hostinger", "cPanel", "WordPress"] },
+      { name: "Integrações e IA", items: ["OpenAI", "Claude", "n8n", "Make", "Zapier", "Kommo API", "WhatsApp"] },
+      { name: "Engenharia", items: ["Levantamento de requisitos", "Análise de sistemas", "Testes", "Depuração", "Documentação", "Java", "Swift", "C/C++"] },
     ],
     languagesTitle: "Idiomas",
     languages: [
@@ -234,13 +258,14 @@ const pt = {
   },
   contact: {
     kicker: "Contato",
-    title: "Vamos automatizar algo juntos?",
-    text: "Me conte o processo que hoje toma tempo do seu time. Respondo rápido pelo WhatsApp ou e-mail.",
+    title: "Vamos construir o seu sistema?",
+    text: "Tem um sistema, painel ou integração para tirar do papel? Me conte a ideia. Respondo rápido pelo WhatsApp ou e-mail.",
     whatsapp: "Chamar no WhatsApp",
+    whatsappMessage: "Olá, Anderson! Vim pelo seu site (portfólio) e gostaria de conversar sobre um projeto.",
     copy: "Copiar e-mail",
     copied: "E-mail copiado",
   },
-  footer: { rights: "Feito com React, liquid glass e café." },
+  footer: { rights: "Feito com React, TypeScript e liquid glass." },
 };
 
 type Dict = typeof pt;
@@ -248,7 +273,7 @@ type Dict = typeof pt;
 const en: Dict = {
   nav: {
     about: "About",
-    flow: "How I work",
+    flow: "Architecture",
     experience: "Experience",
     projects: "Projects",
     skills: "Stack",
@@ -257,10 +282,10 @@ const en: Dict = {
   hero: {
     status: "Open to new projects",
     greeting: "Hi, I'm",
-    role: "Systems & Automation Analyst",
-    roleTags: ["CRM", "AI", "Integrations", "Web Development"],
+    role: "Systems Developer",
+    roleTags: ["Front-end", "Back-end", "APIs", "Databases"],
     summary:
-      "I connect CRM, WhatsApp, websites and AI so marketing, sales and support run without manual work.",
+      "I build web systems end to end: React and TypeScript interfaces, back-end business logic, PostgreSQL databases and API integrations.",
     ctaProjects: "See projects",
     ctaContact: "Get in touch",
     downloadCV: "Download CV",
@@ -268,44 +293,46 @@ const en: Dict = {
     lensHint: "drag the lens",
     terminal: [
       { cmd: "whoami", out: ["Anderson Linares · Brasília, Brazil", "Systems Analysis and Development · UDF"] },
-      { cmd: "stack --top", out: ["Kommo · n8n · Make · Zapier", "OpenAI · Claude · WordPress · Lovable"] },
-      { cmd: "status", out: ["● automations running", "● leads flowing into the CRM"] },
+      { cmd: "stack --frontend", out: ["React · TypeScript · Tailwind · Vite"] },
+      { cmd: "stack --backend", out: ["REST APIs · Webhooks · Supabase", "PostgreSQL · SQL · PHP · Python"] },
+      { cmd: "git push origin main", out: ["● build ok · deployed"] },
     ],
   },
   stats: [
-    { value: 13000, suffix: "+", label: "contacts in communication flows" },
-    { value: 20, suffix: "+", label: "tools integrated" },
-    { value: 2024, prefix: "", suffix: "", label: "started in automation", plain: true },
+    { value: 9, suffix: "", label: "projects in the portfolio" },
+    { value: 11, suffix: "+", label: "languages and technologies" },
+    { value: 2022, suffix: "", label: "started in systems (UDF)", plain: true },
     { value: 3, suffix: "", label: "languages · PT · ES · EN" },
   ],
   about: {
     kicker: "About",
-    title: "Systems that talk to each other.",
+    title: "From the database to the interface.",
     body:
-      "I hold a degree in Systems Analysis and Development from UDF. I work with systems integration, WordPress website maintenance, CRM implementation, chatbots, marketing and sales automation, and custom solutions. I've worked on digital operations, launches, communication campaigns, WhatsApp workflows and email marketing.",
+      "I hold a degree in Systems Analysis and Development from UDF. I build complete web systems — I model the data, write the back-end rules, design the screens and connect everything to other platforms through APIs. I also have experience with CRMs, integrations and applied AI, which helps me ship systems that already talk to the rest of the operation.",
     highlights: [
-      { title: "Integration", text: "Webhooks and APIs linking website, CRM, finance and support." },
-      { title: "Automation", text: "n8n, Make and Zapier workflows that take repetitive work off the team." },
-      { title: "Applied AI", text: "Chatbots and agents that answer, qualify and follow up on leads." },
+      { title: "Front-end", text: "React and TypeScript interfaces that are responsive, fast and easy to use." },
+      { title: "Back-end", text: "APIs, server functions, authentication and per-user access rules." },
+      { title: "Data & integrations", text: "PostgreSQL, SQL, webhooks and APIs connecting the system to CRM, WhatsApp and AI." },
     ],
   },
   flow: {
-    kicker: "How I work",
-    title: "One lead, from form to WhatsApp.",
-    text: "Simulate a contact moving through a workflow I build often.",
-    run: "Simulate lead",
+    kicker: "Architecture",
+    title: "What happens behind a click.",
+    text: "Send a request and follow its path through the layers of a system I build.",
+    run: "Send request",
     running: "Processing…",
-    nodes: ["Form", "Webhook", "n8n", "AI", "CRM", "WhatsApp"],
+    nodes: ["Interface", "API", "Auth", "Rules", "PostgreSQL", "Webhook"],
+    requests,
     logs: [
-      "new submission from {name}",
-      "payload validated · source and UTM captured",
-      "workflow started · phone normalized",
-      "lead qualified · high intent",
-      "contact created in pipeline · owner assigned",
-      "welcome message sent",
+      "{method} {path} sent from the React interface",
+      "route matched · payload validated",
+      "JWT verified · row-level security applied",
+      "business rule executed · totals recalculated",
+      "query on {table} · transaction committed",
+      "event sent to integrations (CRM / WhatsApp)",
     ],
-    done: "workflow finished in {ms} ms",
-    names: ["Mariana", "Rafael", "Juliana", "Carlos", "Beatriz", "Lucas"],
+    done: "{status} in {ms} ms",
+    idle: "waiting for a request…",
   },
   experience: {
     kicker: "Career",
@@ -313,16 +340,29 @@ const en: Dict = {
     current: "Current",
     items: [
       {
-        role: "AI, Automation and Web Development",
+        role: "CRM Analyst / Automation Manager",
+        company: "Efeito Digital",
+        period: "May 2026 – Present",
+        location: "Brasília, DF · Hybrid",
+        current: true,
+        bullets: [
+          "Build systems and internal tools with AI support (vibe coding and Claude Code), from analysis to implementation.",
+          "Integrations and automations in n8n, including advanced workflows with MCP, Claude and other AI tools.",
+          "Implement and structure CRMs, sales processes, customer journeys and service workflows.",
+          "Manage AI and automation: requirements, build, documentation, maintenance and optimization.",
+          "Solve technical issues across WordPress, integrations and systems, and help shape the architecture of new projects.",
+        ],
+      },
+      {
+        role: "Systems, Web and AI Development",
         company: "Independent projects / freelance services",
         period: "2024 – Present",
         location: "Remote",
-        current: true,
         bullets: [
+          "Built web systems with React, TypeScript and Supabase (PostgreSQL, authentication and access rules).",
           "Created and maintained WordPress pages, landing pages and e-commerce adjustments for clients.",
-          "Built automations with Make and n8n for customer service, CRM, forms, lead capture and follow-up.",
-          "Implemented chatbots and workflows integrated with WhatsApp, CRM and digital marketing tools.",
-          "Created simple, functional solutions to reduce manual tasks and centralize information.",
+          "API and webhook integrations and n8n/Make automations for customer service, CRM and forms.",
+          "Chatbots and workflows integrated with WhatsApp, CRM and AI.",
         ],
       },
       {
@@ -331,22 +371,21 @@ const en: Dict = {
         period: "Sep 2025 – May 2026",
         location: "Águas Claras, DF",
         bullets: [
-          "Managed digital communication and website maintenance, keeping pages, content and systems aligned with business strategy.",
-          "Launch and flash-sale campaigns with bulk WhatsApp outreach (ManyChat), email (ActiveCampaign) and relationship automation.",
-          "Managed groups with Redirect+ and Sendflow and communication workflows for events and databases of 13,000+ contacts.",
-          "Payment links in Teachable and direct communication with the base: countdowns, instruction letters and no-show protocols.",
+          "Maintained websites and systems, keeping pages and content functional and aligned with business strategy.",
+          "WhatsApp and email communication workflows (ManyChat and ActiveCampaign) for launches and events.",
+          "Payment links in Teachable and contact base management.",
         ],
       },
       {
-        role: "Systems and Automation Analyst",
+        role: "Systems Developer and Analyst",
         company: "BRL Educação – Formação Empresarial",
         period: "Aug 2024 – Sep 2025",
         location: "Brasília, DF",
         bullets: [
-          "Analyzed and integrated systems and tools to connect marketing, sales and finance processes.",
-          "Configured CRMs, automations, fields, pipelines and service workflows.",
-          "Built custom solutions in Lovable and supported the use of AI to optimize internal routines.",
+          "Built custom solutions in Lovable (React) and used AI to optimize internal routines.",
+          "Analyzed and integrated systems to connect marketing, sales and finance.",
           "Integrated tools through webhooks and platforms such as Make, Zapier, Pluga and Kommo.",
+          "Configured CRMs, fields, pipelines and service workflows.",
         ],
       },
       {
@@ -355,9 +394,9 @@ const en: Dict = {
         period: "Feb 2023 – Dec 2024",
         location: "Brasília, DF",
         bullets: [
-          "Managed orders, operations and promotion of free Bible courses online and in person.",
-          "Created landing pages, digital assets and communication materials for campaigns and internal projects.",
-          "Supported live broadcasts, recordings, video/photo editing and content operations.",
+          "Created landing pages, digital assets and communication materials.",
+          "Managed orders and operations for the promotion of free courses.",
+          "Supported live broadcasts, recordings and video/photo editing.",
         ],
       },
       {
@@ -376,52 +415,53 @@ const en: Dict = {
     kicker: "Work",
     title: "Projects",
     visit: "Open",
-    filters: { all: "All", automation: "Automation", system: "Systems", web: "Websites" },
+    code: "Code",
+    filters: { all: "All", system: "Systems", web: "Websites", integration: "Integrations" },
     items: [
       {
-        title: "CRM integrated with websites and systems",
-        description: "Pipelines, fields, bots, forms and webhooks connecting lead capture, support and follow-up.",
-        tags: ["Kommo", "Webhooks", "WordPress"],
+        title: "Solar Gestor",
+        description: "ERP for a blinds and curtains company: customers, quotes, orders, costs, pricing formulas, maintenance, audit log and reports.",
+        tags: ["React", "TypeScript", "PostgreSQL", "PL/pgSQL"],
       },
       {
-        title: "Sales process automation",
-        description: "Make, n8n, Zapier and Pluga workflows that standardize steps and keep every record traceable.",
-        tags: ["n8n", "Make", "Zapier", "Pluga"],
-      },
-      {
-        title: "Chatbots and AI-powered support",
-        description: "Lead support, qualification and nurturing on WhatsApp with CRM, marketing tools and AI.",
-        tags: ["WhatsApp", "OpenAI", "Claude", "ManyChat"],
+        title: "Casório",
+        description: "Wedding planning system with public RSVP, gift registry, budget tracking and AI-powered PDF quote reading.",
+        tags: ["TanStack Start", "Supabase", "RLS", "AI"],
       },
       {
         title: "Zenith Therapies",
-        description: "Patient registration and follow-up system for a naturopathy clinic.",
-        tags: ["Lovable", "React", "TypeScript"],
+        description: "Patient registration and follow-up system for a naturopathy clinic, with practitioner and patient areas.",
+        tags: ["React", "TypeScript", "Supabase"],
       },
       {
         title: "Aurum Core",
         description: "Web system for personal finance management.",
-        tags: ["Lovable", "React", "TypeScript"],
+        tags: ["React", "TypeScript", "Lovable"],
+      },
+      {
+        title: "APIs and integrations",
+        description: "Webhooks, serverless functions and workflows connecting websites, CRMs, WhatsApp and AI models.",
+        tags: ["REST", "Webhooks", "Vercel", "n8n"],
       },
       {
         title: "Comece pelo Mundo",
         description: "Travel website with an interactive 3D globe.",
-        tags: ["Three.js", "3D", "Web"],
+        tags: ["Three.js", "WebGL", "JavaScript"],
       },
       {
         title: "Jarrão Flores",
         description: "Conversion-focused landing page for a flower shop.",
-        tags: ["Landing Page", "Conversion"],
+        tags: ["Front-end", "Landing Page"],
       },
       {
         title: "Maria Gois Psi",
         description: "Informational and client-retention page for a psychologist.",
-        tags: ["Landing Page", "Health"],
+        tags: ["Front-end", "Landing Page"],
       },
       {
         title: "Drogaria Ariane",
         description: "Informational landing page for a drugstore.",
-        tags: ["Landing Page", "Health"],
+        tags: ["Front-end", "Landing Page"],
       },
     ],
   },
@@ -429,12 +469,12 @@ const en: Dict = {
     kicker: "Tools",
     title: "Stack",
     groups: [
-      { name: "CRM & automation", items: ["Kommo", "RD Station", "Clint", "ActiveCampaign", "ManyChat", "Make", "n8n", "Zapier", "Pluga", "ClickUp"] },
-      { name: "AI & chatbots", items: ["OpenAI", "Claude", "Claude Code", "Chatbots", "Lead qualification", "Support agents"] },
-      { name: "Web & CMS", items: ["WordPress", "WooCommerce", "Elementor", "Lovable", "Hostinger", "cPanel", "Landing pages"] },
-      { name: "Digital marketing", items: ["Launches", "WhatsApp outreach", "Email marketing", "Teachable", "Redirect+", "Sendflow", "Database management"] },
-      { name: "Development", items: ["JavaScript", "TypeScript", "React", "Python", "PHP", "Java", "Swift", "C/C++", "HTML", "CSS", "Git"] },
-      { name: "Data & quality", items: ["MySQL", "phpMyAdmin", "SQL", "Data modeling", "Requirements", "Testing", "Debugging", "Documentation"] },
+      { name: "Front-end", items: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Vite", "TanStack", "Three.js", "Responsive design"] },
+      { name: "Back-end", items: ["REST APIs", "Webhooks", "Serverless functions", "Supabase", "Authentication", "Row-level security", "PHP", "Python"] },
+      { name: "Databases", items: ["PostgreSQL", "MySQL", "SQL", "PL/pgSQL", "Data modeling", "phpMyAdmin"] },
+      { name: "Tooling", items: ["Git", "GitHub", "VS Code", "Vercel", "Lovable", "Claude Code", "Hostinger", "cPanel", "WordPress"] },
+      { name: "Integrations & AI", items: ["OpenAI", "Claude", "n8n", "Make", "Zapier", "Kommo API", "WhatsApp"] },
+      { name: "Engineering", items: ["Requirements gathering", "Systems analysis", "Testing", "Debugging", "Documentation", "Java", "Swift", "C/C++"] },
     ],
     languagesTitle: "Languages",
     languages: [
@@ -453,13 +493,14 @@ const en: Dict = {
   },
   contact: {
     kicker: "Contact",
-    title: "Shall we automate something together?",
-    text: "Tell me about the process that eats up your team's time. I reply fast on WhatsApp or email.",
+    title: "Shall we build your system?",
+    text: "Have a system, dashboard or integration you want to get off the ground? Tell me the idea. I reply fast on WhatsApp or email.",
     whatsapp: "Message on WhatsApp",
+    whatsappMessage: "Hi Anderson! I found you through your website (portfolio) and would like to talk about a project.",
     copy: "Copy email",
     copied: "Email copied",
   },
-  footer: { rights: "Built with React, liquid glass and coffee." },
+  footer: { rights: "Built with React, TypeScript and liquid glass." },
 };
 
 export const translations: Record<Lang, Dict> = { pt, en };

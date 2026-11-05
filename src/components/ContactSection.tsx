@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Check, Copy, Github, Linkedin, MessageCircle, Phone } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import { contactInfo, useLang } from "@/lib/i18n";
+import { contactInfo, useLang, whatsappLink } from "@/lib/i18n";
 
 const ContactSection = () => {
   const { t } = useLang();
@@ -33,7 +33,7 @@ const ContactSection = () => {
 
             <div className="relative mt-9 flex flex-col items-center justify-center gap-2.5 sm:flex-row">
               <a
-                href={contactInfo.whatsapp}
+                href={whatsappLink(t.contact.whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.7)] transition-transform hover:-translate-y-0.5 sm:w-auto"

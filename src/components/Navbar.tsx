@@ -4,7 +4,7 @@ import { useLang } from "@/lib/i18n";
 import { useLiquidGlass } from "@/lib/liquid-glass";
 import LanguageToggle from "./LanguageToggle";
 
-const ids = ["sobre", "fluxo", "experiencia", "projetos", "stack", "contato"] as const;
+const ids = ["sobre", "arquitetura", "experiencia", "projetos", "stack", "contato"] as const;
 
 const Navbar = () => {
   const { t } = useLang();
@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const labels: Record<(typeof ids)[number], string> = {
     sobre: t.nav.about,
-    fluxo: t.nav.flow,
+    arquitetura: t.nav.flow,
     experiencia: t.nav.experience,
     projetos: t.nav.projects,
     stack: t.nav.skills,

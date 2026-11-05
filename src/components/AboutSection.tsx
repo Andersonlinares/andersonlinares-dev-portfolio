@@ -1,8 +1,8 @@
-import { Bot, Plug, Workflow } from "lucide-react";
+import { Database, Monitor, Server } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { useLang } from "@/lib/i18n";
 
-const icons = [Plug, Workflow, Bot];
+const icons = [Monitor, Server, Database];
 
 const AboutSection = () => {
   const { t } = useLang();
