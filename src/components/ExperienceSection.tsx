@@ -1,43 +1,79 @@
-import { Briefcase } from "lucide-react";
+import { useState } from "react";
+import { ChevronDown, MapPin } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { useLang } from "@/lib/i18n";
 
 const ExperienceSection = () => {
   const { t } = useLang();
-  const experiences = t.experience.items;
+  const [open, setOpen] = useState<number>(0);
+  const items = t.experience.items;
+
   return (
-    <section id="experiencia" className="py-20">
-      <div className="container max-w-3xl">
+    <section id="experiencia" className="px-4 py-20 sm:py-28">
+      <div className="mx-auto max-w-4xl">
         <ScrollReveal>
-          <div className="flex items-center gap-3 mb-8">
-            <Briefcase className="text-primary" size={24} />
-            <h2 className="text-2xl md:text-3xl font-bold">{t.experience.title}</h2>
-          </div>
+          <p className="kicker">{t.experience.kicker}</p>
+          <h2 className="section-title">{t.experience.title}</h2>
         </ScrollReveal>
-        <div className="relative pl-4 sm:pl-6 border-l-2 border-border space-y-8 sm:space-y-10">
-          {experiences.map((exp, i) => {
-            const current = "current" in exp && exp.current;
+
+        <ol className="relative mt-10 space-y-3 sm:ml-3 sm:border-l sm:pl-8">
+          {items.map((item, i) => {
+            const isOpen = open === i;
             return (
-              <ScrollReveal key={i} delay={0.1 * (i + 1)}>
-                <div className="relative">
-                  <div className={`absolute -left-[calc(0.5rem+1rem+1px)] sm:-left-[calc(0.5rem+1.5rem+1px)] top-1 w-3 h-3 rounded-full ${current ? "bg-primary animate-pulse" : "bg-primary"}`} />
-                  <div className="bg-card rounded-xl p-4 sm:p-6 border card-glow transition-all duration-300">
-                    <div className="flex flex-col gap-1 mb-1">
-                      <h3 className="font-semibold text-foreground text-sm sm:text-base">{exp.role}</h3>
-                      <span className={`text-xs font-mono shrink-0 w-fit ${current ? "px-2 py-0.5 rounded-full bg-primary/15 text-primary" : "text-primary"}`}>
-                        {exp.period}
-                      </span>
+              <li key={item.company + item.period} className="relative">
+                <span
+                  className={`absolute -left-[39px] top-7 hidden h-3 w-3 rounded-full border-2 sm:block ${
+                    "current" in item && item.current ? "border-primary bg-primary shadow-[0_0_14px_hsl(var(--primary))]" : "border-white/25 bg-background"
+                  }`}
+                  aria-hidden
+                />
+                <ScrollReveal delay={0.05 * i}>
+                  <div className={`glass spot rounded-3xl transition-colors ${isOpen ? "bg-white/[0.04]" : ""}`}>
+                    <button
+                      className="flex w-full items-start gap-4 p-5 text-left sm:p-6"
+                      onClick={() => setOpen(isOpen ? -1 : i)}
+                      aria-expanded={isOpen}
+                    >
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h3 className="text-base font-semibold sm:text-lg">{item.role}</h3>
+                          {"current" in item && item.current && (
+                            <span className="rounded-full bg-emerald-400/10 px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wider text-emerald-400">
+                              {t.experience.current}
+                            </span>
+                          )}
+                        </div>
+                        <p className="mt-0.5 text-sm text-primary">{item.company}</p>
+                        <p className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-muted-foreground sm:text-xs">
+                          <span>{item.period}</span>
+                          <span className="inline-flex items-center gap-1">
+                            <MapPin size={11} /> {item.location}
+                          </span>
+                        </p>
+                      </div>
+                      <ChevronDown
+                        size={18}
+                        className={`mt-1 shrink-0 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                      <div className="overflow-hidden">
+                        <ul className="space-y-2 px-5 pb-6 sm:px-6">
+                          {item.bullets.map((b) => (
+                            <li key={b} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                              {b}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-3">
-                      {exp.company} · {exp.location}
-                    </p>
-                    <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{exp.description}</p>
                   </div>
-                </div>
-              </ScrollReveal>
+                </ScrollReveal>
+              </li>
             );
           })}
-        </div>
+        </ol>
       </div>
     </section>
   );

@@ -1,73 +1,102 @@
-import { Wrench, Code, Brain, Globe } from "lucide-react";
+import { useState } from "react";
+import { GraduationCap, Languages } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { useLang } from "@/lib/i18n";
 
-const tools = [
-  "Kommo", "RD Station", "Clint", "ActiveCampaign", "ManyChat", "Make", "n8n",
-  "Zapier", "Pluga", "ClickUp", "Lovable", "WordPress", "WooCommerce", "Elementor",
-  "Hostinger", "cPanel", "Teachable", "OpenAI", "Claude", "VS Code",
-];
-
-const techs = [
-  "Python", "JavaScript", "Java", "PHP", "Swift", "C", "C++",
-  "HTML", "CSS", "MySQL", "phpMyAdmin", "Git",
-];
-
-const Tag = ({ children }: { children: React.ReactNode }) => (
-  <span className="px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground text-sm font-medium border border-border hover:border-primary/40 transition-colors">
-    {children}
-  </span>
-);
-
 const SkillsSection = () => {
   const { t } = useLang();
+  const s = t.skills;
+  const [group, setGroup] = useState(0);
+  const current = s.groups[group] ?? s.groups[0];
+
   return (
-    <section id="habilidades" className="py-20">
-      <div className="container max-w-3xl space-y-12">
+    <section id="stack" className="px-4 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <div className="flex items-center gap-3 mb-6">
-            <Wrench className="text-primary" size={24} />
-            <h2 className="text-2xl md:text-3xl font-bold">{t.skills.tools}</h2>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {tools.map((x) => <Tag key={x}>{x}</Tag>)}
-          </div>
+          <p className="kicker">{s.kicker}</p>
+          <h2 className="section-title">{s.title}</h2>
         </ScrollReveal>
 
-        <ScrollReveal>
-          <div className="flex items-center gap-3 mb-6">
-            <Code className="text-primary" size={24} />
-            <h2 className="text-2xl md:text-3xl font-bold">{t.skills.techs}</h2>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {techs.map((x) => <Tag key={x}>{x}</Tag>)}
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <div className="flex items-center gap-3 mb-6">
-            <Brain className="text-primary" size={24} />
-            <h2 className="text-2xl md:text-3xl font-bold">{t.skills.competencies}</h2>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {t.skills.competencyList.map((c) => <Tag key={c}>{c}</Tag>)}
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <div className="flex items-center gap-3 mb-6">
-            <Globe className="text-primary" size={24} />
-            <h2 className="text-2xl md:text-3xl font-bold">{t.skills.languages}</h2>
-          </div>
-          <div className="flex flex-wrap gap-3 sm:gap-4">
-            {t.skills.languageList.map((l) => (
-              <div key={l.name} className="bg-card rounded-xl px-5 sm:px-6 py-3 sm:py-4 border card-glow transition-all duration-300">
-                <p className="font-medium text-foreground text-sm sm:text-base">{l.name}</p>
-                <p className="text-xs sm:text-sm text-primary">{l.level}</p>
+        <ScrollReveal delay={0.08}>
+          <div className="glass mt-10 grid overflow-hidden rounded-[28px] md:grid-cols-[240px_1fr]">
+            {/* categorias */}
+            <div className="flex gap-1 overflow-x-auto border-b p-2 md:flex-col md:overflow-visible md:border-b-0 md:border-r md:p-3" role="tablist">
+              {s.groups.map((g, i) => (
+                <button
+                  key={g.name}
+                  role="tab"
+                  aria-selected={group === i}
+                  onClick={() => setGroup(i)}
+                  className={`flex shrink-0 items-center justify-between gap-3 whitespace-nowrap rounded-2xl px-4 py-2.5 text-left text-sm font-medium transition-colors ${
+                    group === i ? "bg-white/[0.08] text-foreground" : "text-muted-foreground hover:bg-white/[0.03] hover:text-foreground"
+                  }`}
+                >
+                  {g.name}
+                  <span className={`hidden font-mono text-[11px] md:inline ${group === i ? "text-primary" : "text-muted-foreground/60"}`}>
+                    {String(g.items.length).padStart(2, "0")}
+                  </span>
+                </button>
+              ))}
+            </div>
+            {/* itens */}
+            <div className="min-h-[220px] p-5 sm:p-7">
+              <div key={group} className="flex flex-wrap gap-2">
+                {current.items.map((item, i) => (
+                  <span
+                    key={item}
+                    className="animate-fade-up rounded-xl border bg-white/[0.03] px-3.5 py-2 text-sm font-medium transition-colors hover:border-primary/50 hover:text-primary"
+                    style={{ animationDelay: `${i * 0.03}s` }}
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </ScrollReveal>
+
+        <div className="mt-3 grid gap-3 md:grid-cols-2">
+          <ScrollReveal delay={0.1}>
+            <div className="glass h-full rounded-[28px] p-5 sm:p-7">
+              <div className="flex items-center gap-2 text-sm font-semibold">
+                <GraduationCap size={18} className="text-primary" /> {s.educationTitle}
+              </div>
+              <p className="mt-4 text-lg font-semibold">{s.degree}</p>
+              <p className="mt-0.5 font-mono text-xs text-muted-foreground">{s.degreeInfo}</p>
+              <ul className="mt-5 space-y-2.5 border-t pt-5">
+                {s.courses.map((c) => (
+                  <li key={c.name} className="text-sm">
+                    <span className="font-medium">{c.name}</span>
+                    <span className="text-muted-foreground"> · {c.detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.16}>
+            <div className="glass h-full rounded-[28px] p-5 sm:p-7">
+              <div className="flex items-center gap-2 text-sm font-semibold">
+                <Languages size={18} className="text-primary" /> {s.languagesTitle}
+              </div>
+              <ul className="mt-5 space-y-5">
+                {s.languages.map((l) => (
+                  <li key={l.name}>
+                    <div className="flex items-baseline justify-between text-sm">
+                      <span className="font-medium">{l.name}</span>
+                      <span className="font-mono text-xs text-muted-foreground">{l.level}</span>
+                    </div>
+                    <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                      <div
+                        className="h-full rounded-full"
+                        style={{ width: `${l.pct}%`, background: "linear-gradient(90deg, hsl(189 94% 58%), hsl(258 90% 72%))" }}
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );
