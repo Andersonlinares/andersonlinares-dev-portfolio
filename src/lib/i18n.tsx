@@ -7,8 +7,6 @@ export type Lang = "pt" | "en";
 export type ProjectKind = "system" | "web" | "integration";
 
 export const projectMeta: { link?: string; repo?: string; kind: ProjectKind }[] = [
-  { repo: "https://github.com/Andersonlinares/solar-gestor", kind: "system" },
-  { link: "https://casorioae.lovable.app", kind: "system" },
   { link: "https://zeniththerapiessystem.lovable.app", kind: "system" },
   { link: "https://aurumcore.lovable.app/", kind: "system" },
   { kind: "integration" },
@@ -64,7 +62,7 @@ const pt = {
     ],
   },
   stats: [
-    { value: 9, suffix: "", label: "projetos no portfólio" },
+    { value: 7, suffix: "", label: "projetos no portfólio" },
     { value: 11, suffix: "+", label: "linguagens e tecnologias" },
     { value: 2022, suffix: "", label: "início em sistemas (UDF)", plain: true },
     { value: 3, suffix: "", label: "idiomas · PT · ES · EN" },
@@ -184,16 +182,6 @@ const pt = {
     filters: { all: "Todos", system: "Sistemas", web: "Sites", integration: "Integrações" },
     items: [
       {
-        title: "Solar Gestor",
-        description: "ERP para empresa de persianas e cortinas: clientes, orçamentos, pedidos, custos, fórmulas de preço, manutenções, auditoria e relatórios.",
-        tags: ["React", "TypeScript", "PostgreSQL", "PL/pgSQL"],
-      },
-      {
-        title: "Casório",
-        description: "Sistema de organização de casamento com confirmação de presença pública, lista de presentes, orçamento e leitura de PDF por IA.",
-        tags: ["TanStack Start", "Supabase", "RLS", "IA"],
-      },
-      {
         title: "Zenith Therapies",
         description: "Sistema de cadastro e acompanhamento de pacientes para clínica de naturoterapia, com áreas de profissional e paciente.",
         tags: ["React", "TypeScript", "Supabase"],
@@ -299,7 +287,7 @@ const en: Dict = {
     ],
   },
   stats: [
-    { value: 9, suffix: "", label: "projects in the portfolio" },
+    { value: 7, suffix: "", label: "projects in the portfolio" },
     { value: 11, suffix: "+", label: "languages and technologies" },
     { value: 2022, suffix: "", label: "started in systems (UDF)", plain: true },
     { value: 3, suffix: "", label: "languages · PT · ES · EN" },
@@ -418,16 +406,6 @@ const en: Dict = {
     code: "Code",
     filters: { all: "All", system: "Systems", web: "Websites", integration: "Integrations" },
     items: [
-      {
-        title: "Solar Gestor",
-        description: "ERP for a blinds and curtains company: customers, quotes, orders, costs, pricing formulas, maintenance, audit log and reports.",
-        tags: ["React", "TypeScript", "PostgreSQL", "PL/pgSQL"],
-      },
-      {
-        title: "Casório",
-        description: "Wedding planning system with public RSVP, gift registry, budget tracking and AI-powered PDF quote reading.",
-        tags: ["TanStack Start", "Supabase", "RLS", "AI"],
-      },
       {
         title: "Zenith Therapies",
         description: "Patient registration and follow-up system for a naturopathy clinic, with practitioner and patient areas.",
